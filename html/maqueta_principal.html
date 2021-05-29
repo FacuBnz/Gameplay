@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+
+  <body>
+    <!-- header -->
+
+    <header id="cabecera">
+      <!--logo-->
+      <div id="logo">
+        <a href="#">Gameplay</a>
+      </div>
+
+      <!-- menu -->
+      <nav id="menu">
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Accion</a></li>
+          <li><a href="#">Estrategia</a></li>
+        </ul>
+      </nav>
+      
+      <div class="clearfix"></div>
+    </header>
+
+    <main id="contenedor">
+
+      <!-- sidebar -->
+      <aside id="sidebar">
+        <!-- Si el usuario está logueado -->
+
+        <!--
+        <div id="login" class="bloque">
+          <h3>Bienvenido facu</h3>
+          <a href="#" class="boton boton-verde">Crear publicación</a>
+          <a href="#" class="boton boton">Crear categoria</a>
+          <a href="#" class="boton boton-turquesa">Mis publicaciones</a>
+          <a href="#" class="boton boton-naranja">Modificar datos</a>
+          <a href="#" class="boton boton-rojo">Cerrar sesion</a>
+        </div>
+        -->
+        <!-- Login -->
+        <div id="login" class="bloque">
+          <h3>Identificate</h3>
+          <form action="#" method="POST">
+            <label for="emaili">Email</label>
+            <input type="emaili" name="emaili" id="emaili">
+
+            <label for="passwordi">Contraseña</label>
+            <input type="password" name="passwordi" id="passwordi">
+            <input type="submit" name="entrar" value="Entrar">
+          </form>
+        </div>
+
+        <!-- Registro -->
+
+        <div id="login" class="bloque">
+          <h3>Registrate</h3>
+          <form action="#" method="POST">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre">
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido">
+            <label for="emailr">Email</label>
+            <input type="emailr" name="emailr" id="emailr">
+            <label for="passwordr">Contraseña</label>
+            <input type="password" name="passwordr" id="passwordr">
+            <input type="submit" name="registro" value="Registrar">
+          </form>
+        </div>
+        
+      </aside>
+  
+      <!-- caja principal -->
+  
+      <div id="principal">
+          <h1>Ultimas publicaciones</h1>
+
+          <article class="entrada">
+            <a href="#">
+              <h2>Hola mundo</h2>
+              <span class="fecha">10/10/20 | Accion</span>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore soluta neque corporis? Animi modi veritatis doloremque harum omnis dolores distinctio nostrum praesentium. Omnis debitis, assumenda autem earum exercitationem facilis quidem?</p>
+            </a>
+          </article>
+
+          <article class="entrada">
+            <a href="#">
+              <h2>Hola mundo2</h2>
+              <span class="fecha">11/10/20 | Accion</span>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore soluta neque corporis? Animi modi veritatis doloremque harum omnis dolores distinctio nostrum praesentium. Omnis debitis, assumenda autem earum exercitationem facilis quidem?</p>
+            </a>
+          </article>
+  
+          <div id="ver-todas">
+              <a href="#">Ver todas</a>
+          </div>
+      </div>
+  </main>
+
+  <!-- footer -->
+  <footer id="pie">
+    <p>Desarrollado por Facundo Benitez &copy;</p>
+  </footer>
+  </body>
+</html>
