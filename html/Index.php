@@ -7,7 +7,7 @@ include_once(__DIR__."/layout/sidebar.php");
 
         <?php foreach ($this->publicaciones as $p): ?>
             <article>
-                <a href="#">
+                <a href="publicacion.php?titulo=<?=$p['titulo']?>">
                     <h2><?=$p['titulo']?></h2>
                     <span class="fecha"><?=$p['fecha']?> | <?=$p['nombre']?></span>
                     <p><?=$p['descripcion']?></p>
