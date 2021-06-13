@@ -15,14 +15,14 @@
     <header id="cabecera">
         <!--logo-->
         <div id="logo">
-            <a href="#">Gameplay</a>
+            <a href="index.php">Gameplay</a>
         </div>
 
         <!-- menu -->
         <nav id="menu">
             <ul>
                 <?php foreach($this->categorias as $c) {?>
-                    <li><a href="#"><?=$c['nombre']?></a></li>
+                    <li><a href="categoria.php?id=<?=$c['id']?>"><?=$c['nombre']?></a></li>
                 <?php }?>
             </ul>
         </nav>
