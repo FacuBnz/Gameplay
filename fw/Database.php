@@ -1,7 +1,7 @@
 <?php
 
 class Database {
-	private $cn = false;
+	private $cn = null;
 	private $res;
 	private static $instance = false;
 
