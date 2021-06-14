@@ -5,7 +5,7 @@ include_once(__DIR__."/layout/sidebar.php");
 $titulo = $this->publicacion['titulo'];
 $fecha = $this->publicacion['fecha'];
 $catego = $this->publicacion['nombre'];
-$desc = str_replace(PHP_EOL, '<p>', $this->publicacion['descripcion']);
+$desc = $this->publicacion['descripcion'];
 ?>
     <div id="principal">
         <h1><?=$titulo?></h1>
