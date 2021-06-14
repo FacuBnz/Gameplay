@@ -18,7 +18,7 @@ include_once(__DIR__."/layout/sidebar.php");
         <?php endforeach;?>
 
         <div id="ver-todas">
-            <a href="#">Ver todas</a>
+            <a href="ver-todos.php">Ver todas</a>
         </div>
     </div>
 </main>
