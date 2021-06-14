@@ -3,7 +3,7 @@ include_once(__DIR__."/layout/header.php");
 include_once(__DIR__."/layout/sidebar.php");
 ?>
     <div id="principal">
-        <h1><?=$this->nombreCategoria?></h1>
+        <h1>Publicaciones de la categoria : <?=$this->nombreCategoria?></h1>
 
         <?php foreach ($this->publicaciones as $p): ?>
             <?php if ($this->nombreCategoria == $p['nombre']) :?>
@@ -18,10 +18,6 @@ include_once(__DIR__."/layout/sidebar.php");
                 </article>
             <?php endif; ?>
         <?php endforeach;?>
-
-        <div id="ver-todas">
-            <a href="#">Ver todas</a>
-        </div>
     </div>
 </main>
 
