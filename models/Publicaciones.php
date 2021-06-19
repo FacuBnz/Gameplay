@@ -16,9 +16,7 @@ class Publicaciones extends Model{
         return $this->db->fetchAll();
     }
 
-    public function getPublicacion($tittle){
-
-        if(empty($tittle)) header('Location: index.php');
+    public function getPublicacion($tittle){ 
 
         $tittle = $this->db->escape($tittle);
         $tittle = $this->db->escapeWildcards($tittle);
@@ -32,6 +30,5 @@ class Publicaciones extends Model{
 
         $this->db->query($sql);
         return $this->db->fetch();
-
     }
 }

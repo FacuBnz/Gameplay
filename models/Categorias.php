@@ -9,17 +9,11 @@ class Categorias extends Model{
 
     public function getNameCategory($id){
 
-        if(ctype_digit($id)){
-            $sql = "SELECT id, nombre FROM categorias WHERE id=$id";
+        $sql = "SELECT id, nombre FROM categorias WHERE id=$id";
 
-            $this->db->query($sql);
-            $rs = $this->db->fetch();
-            if($rs) return $rs;
-            header('Location: index.php');
-            
-        }
-        header('Location: index.php');
+        $this->db->query($sql);
+        return $this->db->fetch();
+        
     }
 
-    
 }
