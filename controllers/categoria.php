@@ -6,12 +6,14 @@ require '../models/Categorias.php';
 require '../models/Publicaciones.php';
 require '../views/Categoria.php';
 
+if(!isset($_GET['id']) || !ctype_digit($_GET['id'])) header('Location: index.php');
+
 $cate = new Categorias();
 $cateTodos = $cate->getTodos();
 $nombreCategoria = $cate->getNameCategory($_GET['id']);
 
 $publi = new Publicaciones();
-$publiTodos = $publi->getPublicaciones(3);
+$publiTodos = $publi->getPublicaciones();
 
 //var_dump($publiTodos);
 
