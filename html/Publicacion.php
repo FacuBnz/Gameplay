@@ -17,7 +17,7 @@ if($this->publicacion){
 
             <article>
                 <span class="fecha"><?=$fecha?> | <?=$catego?></span>
-                <p><?=$desc?></p>
+                <p><?=preg_replace("/[\r\n|\n|\r]+/", "<br>", $desc)?></p>
             </article>
         <?php else :?>
             <h1>No se ha encontrado la publicación</h1>
