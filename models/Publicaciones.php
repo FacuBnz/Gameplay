@@ -47,6 +47,21 @@ class Publicaciones extends Model{
 
         $this->db->query($sql);
     }
+
+    public function getPublicacionesForUser($user){
+
+        if(empty($user) || !is_array($user)) throw new ValidationPost("Usuario invalido");
+
+        $sql = "SELECT p.*, c.nombre, u.id FROM publicaciones p 
+            INNER JOIN categorias c 
+            ON p.categoria_id = c.id 
+            INNER JOIN usuarios u 
+            ON p.usuario_id = u.id
+            WHERE usuario_id=\"{$user["id"]}\"";
+
+        $this->db->query($sql);
+        return $this->db->fetchAll();
+    }
 }
 
 class ValidationPost extends Exception{}
