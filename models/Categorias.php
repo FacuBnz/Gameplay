@@ -16,4 +16,15 @@ class Categorias extends Model{
         
     }
 
+    public function create($nombre){
+        $nombre = $this->db->escape($nombre);
+
+        if(empty($nombre) || is_numeric($nombre) || preg_match("/[0-9]/", $nombre)) throw new ValidationCategory("Nombre inválido");
+
+        $sql = "INSERT INTO categorias(nombre) VALUES('$nombre')";
+        $this->db->query($sql);
+    }
+
 }
+
+class ValidationCategory extends Exception{}

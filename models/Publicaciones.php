@@ -31,4 +31,22 @@ class Publicaciones extends Model{
         $this->db->query($sql);
         return $this->db->fetch();
     }
+
+    public function create($titulo, $categoria, $desc, $user){
+        $titulo = $this->db->escape($titulo);
+        $categoria = $this->db->escape($categoria);
+        $desc = $this->db->escape($desc);
+
+        if(empty($titulo)) throw new ValidationPost("Titulo inválido");
+        if(empty($desc)) throw new ValidationPost("Descripcion inválida");
+        if(empty($categoria) || !ctype_digit($categoria)) throw new ValidationPost("Categoria inválida");
+        if(empty($user) || !is_array($user)) throw new ValidationPost("Usuario invalido");
+        $fecha = date('Y-m-d');
+
+        $sql = "INSERT INTO publicaciones(usuario_id, categoria_id, titulo, descripcion,fecha) VALUES('{$user['id']}', '$categoria', '$titulo', '$desc', '$fecha')";
+
+        $this->db->query($sql);
+    }
 }
+
+class ValidationPost extends Exception{}
