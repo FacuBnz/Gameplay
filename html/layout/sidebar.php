@@ -9,7 +9,7 @@
             <h3>Bienvenido/a <?=$this->user["nombre"]?></h3>
             <a href="nueva-publicacion.php" class="boton boton-verde">Crear publicación</a>
             <a href="nueva-categoria.php" class="boton boton">Crear categoria</a>
-            <a href="#" class="boton boton-turquesa">Mis publicaciones</a>
+            <a href="mis-publicaciones.php" class="boton boton-turquesa">Mis publicaciones</a>
             <a href="#" class="boton boton-naranja">Modificar datos</a>
             <a href="cerrar.php" class="boton boton-rojo">Cerrar sesion</a>
         </div>
