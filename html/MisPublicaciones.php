@@ -1,0 +1,25 @@
+<?php
+include_once(__DIR__."/layout/header.php");
+include_once(__DIR__."/layout/sidebar.php");
+?>
+    <div id="principal">
+        <h1>Mis publicaciones</h1>
+
+        <?php foreach ($this->publicaciones as $p): ?>
+            
+            <?php $desc = str_replace(PHP_EOL, '<p>', substr($p["descripcion"], 0,200)); ?>
+            <article>
+                <a href="publicacion.php?titulo=<?=$p['titulo']?>">
+                    <h2><?=$p['titulo']?></h2>
+                    <span class="fecha"><?=$p['fecha']?> | <?=$p['nombre']?></span>
+                    <p><?=$desc?>...</p>
+                </a>
+            </article>
+            <a href="modificar-publicacion.php?titulo=<?=$p['titulo']?>&categoria_id=<?=$p['categoria_id']?>&descripcion=<?=$p['descripcion']?>" class="boton boton-naranja\">Editar</a>
+            <a href="borrar-publicacion.php?titulo=<?=$p['titulo']?>" class="boton boton-rojo">Eliminar</a>
+        <?php endforeach;?>
+    </div>
+</main>
+
+<?php
+include_once(__DIR__."/layout/footer.php");
