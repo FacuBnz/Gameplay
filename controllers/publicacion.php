@@ -18,4 +18,5 @@ $publi = $publi->getPublicacion($_GET['titulo']);
 $v = new Publicacion();
 $v->categorias = $cateTodos;
 $v->publicacion = $publi;
+$v->user = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
 $v->render();

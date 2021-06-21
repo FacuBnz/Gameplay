@@ -17,4 +17,5 @@ $publiTodos = $publi->getPublicaciones();
 $v = new VerTodos();
 $v->categorias = $cateTodos;
 $v->publicaciones = $publiTodos;
+$v->user = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
 $v->render();

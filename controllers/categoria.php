@@ -21,4 +21,5 @@ $v = new Categoria();
 $v->categorias = $cateTodos;
 $v->nombreCategoria = $nombreCategoria["nombre"];
 $v->publicaciones = $publiTodos;
+$v->user = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
 $v->render();
