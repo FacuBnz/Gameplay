@@ -18,10 +18,10 @@ if(isset($_POST['registro'])){
     try{
         $user = new Usuarios();
         $user->create($_POST['nombre'], $_POST['apellido'], $_POST['emailr'], $_POST['passwordr']);
-        $_SESSION['completo'] = "El registro se ha completado con exito";
+        $_SESSION['registro_guardado'] = "El registro se ha completado con exito";
 
     }catch(ValidationUser $e){
-        $_SESSION['errores'] = $e;
+        $_SESSION['errores_user'] = $e;
     }
 }
 
@@ -34,7 +34,7 @@ if(isset($_POST['entrar'])){
         $user = new Usuarios();
         $_SESSION['usuario'] = $user->getUser($_POST['emaili'], $_POST['passwordi']);
     } catch (ValidationUser $e) {
-        $_SESSION['errores'] = $e;
+        $_SESSION['errores_user'] = $e;
     }
 }
 
@@ -50,10 +50,10 @@ $publiTodos = $publi->getPublicaciones(4);
 $v = new Index();
 $v->categorias = $cateTodos;
 $v->publicaciones = $publiTodos;
-$v->errores = isset($_SESSION['errores']) ? $_SESSION['errores'] : null;
-$v->completo = isset($_SESSION['completo']) ? $_SESSION['completo'] : null;
+$v->errores= isset($_SESSION['errores_user']) ? $_SESSION['errores_user'] : null;
+$v->completo = isset($_SESSION['registro_guardado']) ? $_SESSION['registro_guardado'] : null;
 $v->user = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
 $v->render();
 
-unset($_SESSION['completo']);
-unset($_SESSION['errores']);
+unset($_SESSION['registro_guardado']);
+unset($_SESSION['errores_user']);
