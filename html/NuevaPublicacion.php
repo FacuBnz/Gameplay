@@ -17,7 +17,7 @@ include_once(__DIR__."/layout/sidebar.php");
             </div>
         <?php endif;?>
         
-        <form action="nueva-publicacion.php" method="POST">
+        <form action="nueva-publicacion" method="POST">
 
         <label for="titulo">Titulo : </label>
         <input type="text" name="titulo" id="titulo">

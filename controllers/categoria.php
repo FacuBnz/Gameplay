@@ -1,6 +1,4 @@
 <?php
-//controllers/index.php
-
 require '../fw/fw.php';
 require '../models/Categorias.php';
 require '../models/Publicaciones.php';
@@ -15,7 +13,6 @@ $nombreCategoria = $cate->getNameCategory($_GET['id']);
 $publi = new Publicaciones();
 $publiTodos = $publi->getPublicaciones();
 
-//var_dump($publiTodos);
 
 $v = new Categoria();
 $v->categorias = $cateTodos;

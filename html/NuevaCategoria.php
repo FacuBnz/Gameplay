@@ -17,7 +17,7 @@ include_once(__DIR__."/layout/sidebar.php");
             </div>
         <?php endif;?>
 
-        <form action="nueva-categoria.php" method="post">
+        <form action="nueva-categoria" method="post">
             <label for="nombre">Nombre de categoria :</label>
             <input type="text" name="nombre" id="nombre">
             <input type="submit" name="nueva_categoria" value="Crear">

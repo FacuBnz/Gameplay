@@ -13,7 +13,7 @@ include_once(__DIR__."/layout/sidebar.php");
             </div>
         <?php endif;?>
         
-        <form action="modificar-publicacion.php" method="POST">
+        <form action="modificar-publicacion" method="POST">
 
         <label for="titulo">Titulo : </label>
         <input type="text" name="titulo" id="titulo" value="<?=isset($this->publicacion['titulo']) ? $this->publicacion['titulo'] : ""?>">

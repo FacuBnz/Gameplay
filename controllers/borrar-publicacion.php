@@ -4,7 +4,7 @@ require '../fw/fw.php';
 require '../models/Publicaciones.php';
 
 if(!isset($_SESSION['usuario'])){
-    header('Location: index.php');
+    header('Location: index');
 }
 
 if(count($_GET) > 0){

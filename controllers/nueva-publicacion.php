@@ -6,7 +6,7 @@ require '../models/Publicaciones.php';
 require '../views/NuevaPublicacion.php';
 
 if(!isset($_SESSION['usuario'])){
-    header('Location: index.php');
+    header('Location: index');
 }
 
 if(isset($_POST['nuevo'])){

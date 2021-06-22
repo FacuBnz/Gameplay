@@ -5,7 +5,7 @@ require '../models/Categorias.php';
 require '../views/NuevaCategoria.php';
 
 if(!isset($_SESSION['usuario'])){
-    header('Location: index.php');
+    header('Location: index');
 }
 
 $cate = new Categorias();

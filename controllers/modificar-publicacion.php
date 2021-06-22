@@ -1,12 +1,11 @@
 <?php
-
 require '../fw/fw.php';
 require '../models/Categorias.php';
 require '../models/Publicaciones.php';
 require '../views/ModificarPublicacion.php';
 
 if(!isset($_SESSION['usuario'])){
-    header('Location: index.php');
+    header('Location: index');
 }
 
 $cate = new Categorias();
@@ -22,7 +21,7 @@ if(isset($_POST['modificar'])){
     try {
         $publicacion->update($_POST['titulo'], $_POST['titulo_anti'], $_POST['categoria'], $_POST['descripcion'], $_SESSION['usuario']);
         $_SESSION['completo_modificacion_post'] = "La publicacion se a guardado con exito";
-        header('Location: mis-publicaciones.php');
+        header('Location: mis-publicaciones');
     } catch (ValidationPost $e) {
         $_SESSION['errores_modificacion_post'] = $e;
         $v->publicacion = $publicacion->getPublicacionForUser($_SESSION['usuario'], $_POST['titulo_anti']);

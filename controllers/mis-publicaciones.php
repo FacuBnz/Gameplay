@@ -6,7 +6,7 @@ require '../models/Publicaciones.php';
 require '../views/MisPublicaciones.php';
 
 if(!isset($_SESSION['usuario'])){
-    header('Location: index.php');
+    header('Location: index');
 }
 
 $cate = new Categorias();

@@ -5,7 +5,7 @@ require '../models/Categorias.php';
 require '../models/Publicaciones.php';
 require '../views/Publicacion.php';
 
-if(!isset($_GET['titulo'])) header('Location: index.php');
+if(!isset($_GET['titulo'])) header('Location: index');
 
 $cate = new Categorias();
 $cateTodos = $cate->getTodos();

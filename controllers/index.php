@@ -1,5 +1,4 @@
 <?php
-//controllers/index.php
 
 require '../fw/fw.php';
 require '../models/Categorias.php';
