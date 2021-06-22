@@ -62,6 +62,61 @@ class Publicaciones extends Model{
         $this->db->query($sql);
         return $this->db->fetchAll();
     }
+
+    public function getPublicacionForUser($user, $titulo){
+        $titulo = $this->db->escapeWildcards($titulo);
+        $titulo = $this->db->escape($titulo);
+
+        if(empty($titulo)) throw new ValidationPost("Titulo inválido");
+        if(empty($user) || !is_array($user)) throw new ValidationPost("Usuario invalido");
+
+        $sql = "SELECT p.*, c.nombre, u.id FROM publicaciones p 
+            INNER JOIN categorias c 
+            ON p.categoria_id = c.id 
+            INNER JOIN usuarios u 
+            ON p.usuario_id = u.id
+            WHERE usuario_id=\"{$user["id"]}\" 
+            AND p.titulo = \"$titulo\"";
+
+        $this->db->query($sql);
+        return $this->db->fetch();
+            
+    }
+
+    public function update($titulo, $titulo_anti, $categoria, $descripcion, $user){
+        $titulo = $this->db->escape($titulo);
+        $titulo_anti = $this->db->escape($titulo_anti);
+        $categoria = $this->db->escape($categoria);
+        $descripcion = $this->db->escape($descripcion);
+
+        if(empty($titulo)) throw new ValidationPost("Titulo inválido");
+        if(empty($titulo_anti)) throw new ValidationPost("Titulo Antiguo inválido");
+        if(empty($descripcion)) throw new ValidationPost("Descripcion inválida");
+        if(empty($categoria) || !ctype_digit($categoria)) throw new ValidationPost("Categoria inválida");
+        if(empty($user) || !is_array($user)) throw new ValidationPost("Usuario invalido");
+
+        $sql = "UPDATE publicaciones 
+        SET titulo='$titulo', descripcion='$descripcion', categoria_id='$categoria'
+        WHERE titulo='$titulo_anti' 
+        AND usuario_id={$user['id']}";
+
+        $this->db->query($sql);
+    }
+
+    public function delete($titulo, $user){
+        $titulo = $this->db->escapeWildcards($titulo);
+        $titulo = $this->db->escape($titulo);
+
+        if(empty($titulo)) throw new ValidationPost("Titulo inválido");
+        if(empty($user) || !is_array($user)) throw new ValidationPost("Usuario invalido");
+
+        $sql = "DELETE 
+        FROM publicaciones 
+        WHERE titulo='$titulo' 
+        AND usuario_id={$user['id']}";
+
+        $this->db->query($sql);
+    }
 }
 
 class ValidationPost extends Exception{}
