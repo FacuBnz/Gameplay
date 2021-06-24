@@ -15,7 +15,7 @@
     <header id="cabecera">
         <!--logo-->
         <div id="logo">
-            <a href="index.php">Gameplay</a>
+            <a href="index">Gameplay</a>
         </div>
 
         <!-- menu -->

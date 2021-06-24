@@ -3,6 +3,7 @@
 RewriteEngine on
 
 RewriteRule ^index$ controllers/index.php
+RewriteRule ^publicacion$ controllers/publicacion.php
 RewriteRule ^mis-publicaciones$ controllers/mis-publicaciones.php
 RewriteRule ^modificar-publicacion$ controllers/modificar-publicacion.php
 RewriteRule ^nueva-categoria$ controllers/nueva-categoria.php

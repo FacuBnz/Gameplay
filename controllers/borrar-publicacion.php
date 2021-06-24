@@ -17,4 +17,4 @@ if(count($_GET) > 0){
     }
 }
 
-header('Location: mis-publicaciones.php');
+header('Location: mis-publicaciones');
