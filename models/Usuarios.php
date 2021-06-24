@@ -51,6 +51,28 @@ class Usuarios extends Model{
         return $user;
     }
 
+    public function update($nombre, $apellido, $email, $user){
+
+        $nombre = $this->db->escape($nombre);
+        $apellido = $this->db->escape($apellido);
+        $email = $this->db->escape($email);
+
+        if(empty($nombre) || is_numeric($nombre) || preg_match("/[0-9]/", $nombre)) throw new ValidationUser("El nombre no es válido");
+
+        if(empty($apellido) || is_numeric($apellido) || preg_match("/[0-9]/", $apellido)) throw new ValidationUser("El apellido no es válido");
+
+        if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) throw new ValidationUser("El email no es válido");
+
+        if(empty($user) || !is_array($user)) throw new ValidationUser("Usuario invalido");
+
+
+        $sql = "UPDATE usuarios 
+        SET nombre='$nombre', apellido='$apellido', email='$email' 
+        WHERE id={$user['id']}";
+
+        $this->db->query($sql);
+    }
+
 }
 
 class ValidationUser extends Exception{}
