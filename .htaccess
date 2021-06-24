@@ -6,6 +6,7 @@ RewriteRule ^index$ controllers/index.php
 RewriteRule ^publicacion$ controllers/publicacion.php
 RewriteRule ^mis-publicaciones$ controllers/mis-publicaciones.php
 RewriteRule ^modificar-publicacion$ controllers/modificar-publicacion.php
+RewriteRule ^modificar-datos$ controllers/modificar-datos.php
 RewriteRule ^nueva-categoria$ controllers/nueva-categoria.php
 RewriteRule ^nueva-publicacion$ controllers/nueva-publicacion.php
 RewriteRule ^categoria$ controllers/categoria.php
