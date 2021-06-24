@@ -10,7 +10,7 @@
             <a href="nueva-publicacion" class="boton boton-verde">Crear publicación</a>
             <a href="nueva-categoria" class="boton boton">Crear categoria</a>
             <a href="mis-publicaciones" class="boton boton-turquesa">Mis publicaciones</a>
-            <a href="#" class="boton boton-naranja">Modificar datos</a>
+            <a href="modificar-datos" class="boton boton-naranja">Modificar datos</a>
             <a href="cerrar" class="boton boton-rojo">Cerrar sesion</a>
         </div>
         <?php else :?>
