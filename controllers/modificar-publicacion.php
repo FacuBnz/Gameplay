@@ -12,7 +12,7 @@ $cate = new Categorias();
 $publicacion = new Publicaciones();
 $v = new ModificarPublicacion();
 
-if(isset($_POST['modificar'])){
+if(count($_POST) > 0){
     if(!isset($_POST['titulo'])) die("Error de validacion titulo");
     if(!isset($_POST['titulo_anti'])) die("Error de validacion titulo");
     if(!isset($_POST['categoria'])) die("Error de validacion categoria");
@@ -31,8 +31,9 @@ if(isset($_POST['modificar'])){
 $cateTodos = $cate->getTodos();
 $v->categorias = $cateTodos;
 
-if(isset($_GET['titulo'])){
+if(count($_GET) > 0){
     try {
+        if(!isset($_GET['titulo'])) die("Error de validacion del parametro titulo");
         $v->publicacion = $publicacion->getPublicacionForUser($_SESSION['usuario'], $_GET['titulo']);
     } catch (ValidationPost $e) {
         $_SESSION['errores_modificacion_post'] = $e;

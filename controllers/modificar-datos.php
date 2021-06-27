@@ -12,7 +12,7 @@ $cate = new Categorias();
 $u = new Usuarios();
 $v = new ModificarDatos();
 
-if(isset($_POST['mod'])){
+if(count($_POST) > 0){
 
     if(!isset($_POST['nombre'])) die("Error de validacion nombre");
     if(!isset($_POST['apellido'])) die("Error de validacion apellido");

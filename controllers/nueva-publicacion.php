@@ -9,7 +9,7 @@ if(!isset($_SESSION['usuario'])){
     header('Location: index');
 }
 
-if(isset($_POST['nuevo'])){
+if(count($_POST) > 0){
     if(!isset($_POST['titulo'])) die("Error de validacion titulo");
     if(!isset($_POST['categoria'])) die("Error de validacion categoria");
     if(!isset($_POST['descripcion'])) die("Error de validacion descripcion");

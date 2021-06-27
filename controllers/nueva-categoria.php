@@ -11,7 +11,7 @@ if(!isset($_SESSION['usuario'])){
 $cate = new Categorias();
 $categorias = $cate->getTodos();
 
-if(isset($_POST['nueva_categoria'])){
+if(count($_POST) > 0){
     if(!isset($_POST['nombre'])) die("Error de validacion nombre de categoria");
 
     try{

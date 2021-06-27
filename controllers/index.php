@@ -7,7 +7,7 @@ require '../models/Usuarios.php';
 require '../views/Index.php';
 
 
-if(isset($_POST['registro'])){
+if(count($_POST) > 0 && isset($_POST['registro'])){
 
     if(!isset($_POST['nombre'])) die("Error de validacion nombre"); 
     if(!isset($_POST['apellido'])) die("Error de validacion apellido"); 
@@ -24,7 +24,7 @@ if(isset($_POST['registro'])){
     }
 }
 
-if(isset($_POST['entrar'])){
+if(count($_POST) > 0 && isset($_POST['entrar'])){
     
     if(!isset($_POST['emaili'])) die("Error de validacion email"); 
     if(!isset($_POST['passwordi'])) die("Error de validacion password"); 

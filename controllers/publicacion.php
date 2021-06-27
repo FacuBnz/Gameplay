@@ -5,7 +5,7 @@ require '../models/Categorias.php';
 require '../models/Publicaciones.php';
 require '../views/Publicacion.php';
 
-if(!isset($_GET['titulo'])) header('Location: index');
+if(!isset($_GET['titulo'])) die("Error de validacion del parametro titulo");
 
 $cate = new Categorias();
 $cateTodos = $cate->getTodos();

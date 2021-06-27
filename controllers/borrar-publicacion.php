@@ -9,6 +9,8 @@ if(!isset($_SESSION['usuario'])){
 
 if(count($_GET) > 0){
     try {
+        if(!isset($_GET['titulo'])) die("Error de validacion del parametro titulo");
+
         $publi = new Publicaciones();
         $publi->delete($_GET['titulo'], $_SESSION['usuario']);
         $_SESSION['completo_modificacion_post'] = "Publicación eliminada correctamente";

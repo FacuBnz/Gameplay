@@ -4,7 +4,7 @@ require '../models/Categorias.php';
 require '../models/Publicaciones.php';
 require '../views/Categoria.php';
 
-if(!isset($_GET['id']) || !ctype_digit($_GET['id'])) header('Location: index.php');
+if(!isset($_GET['id']) || !ctype_digit($_GET['id'])) die("Error de validacion del parametro id");;
 
 $cate = new Categorias();
 $cateTodos = $cate->getTodos();
