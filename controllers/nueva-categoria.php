@@ -9,7 +9,6 @@ if(!isset($_SESSION['usuario'])){
 }
 
 $cate = new Categorias();
-$categorias = $cate->getTodos();
 
 if(count($_POST) > 0){
     if(!isset($_POST['nombre'])) die("Error de validacion nombre de categoria");
@@ -24,6 +23,7 @@ if(count($_POST) > 0){
 
 
 
+$categorias = $cate->getTodos();
 $v = new NuevaCategoria();
 $v->categorias = $categorias;
 $v->completo = isset($_SESSION['categoria_guardado']) ? $_SESSION['categoria_guardado'] : null;
