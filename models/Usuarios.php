@@ -1,5 +1,7 @@
 <?php
 
+require_once '../models/ValidationUser.php';
+
 class Usuarios extends Model{
 
     public function create($nombre, $apellido, $email, $pass){
@@ -75,4 +77,3 @@ class Usuarios extends Model{
 
 }
 
-class ValidationUser extends Exception{}

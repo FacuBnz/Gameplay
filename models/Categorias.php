@@ -1,5 +1,7 @@
 <?php
 
+require_once '../models/ValidationCategory.php';
+
 class Categorias extends Model{
     
     public function getTodos(){
@@ -27,4 +29,3 @@ class Categorias extends Model{
 
 }
 
-class ValidationCategory extends Exception{}

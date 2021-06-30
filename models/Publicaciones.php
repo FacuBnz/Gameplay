@@ -1,4 +1,5 @@
 <?php
+require_once '../models/ValidationPost.php';
 class Publicaciones extends Model{
     
     public function getPublicaciones($limit=null){
@@ -119,4 +120,3 @@ class Publicaciones extends Model{
     }
 }
 
-class ValidationPost extends Exception{}
