@@ -58,7 +58,8 @@ class Publicaciones extends Model{
             ON p.categoria_id = c.id 
             INNER JOIN usuarios u 
             ON p.usuario_id = u.id
-            WHERE usuario_id=\"{$user["id"]}\"";
+            WHERE usuario_id=\"{$user["id"]}\"
+            ORDER BY p.id DESC";
 
         $this->db->query($sql);
         return $this->db->fetchAll();
