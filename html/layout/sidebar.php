@@ -21,10 +21,10 @@
                     <?php endif ;?>
                 <form action="index" method="POST">
                     <label for="emaili">Email</label>
-                    <input type="email" name="emaili" id="emaili">
+                    <input type="email" name="emaili" id="emaili" required>
 
                     <label for="passwordi">Contraseña</label>
-                    <input type="password" name="passwordi" id="passwordi">
+                    <input type="password" name="passwordi" id="passwordi" required>
                     <input type="submit" name="entrar" value="Entrar">
                 </form>
             </div>
@@ -44,19 +44,19 @@
                             <div class="alerta alerta-error"><?=$this->errores->getMessage()?></div>
                     <?php endif ;?>
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre">
+                    <input type="text" name="nombre" id="nombre" required>
                     
 
                     <label for="apellido">Apellido</label>
-                    <input type="text" name="apellido" id="apellido">
+                    <input type="text" name="apellido" id="apellido" required>
 
 
                     <label for="emailr">Email</label>
-                    <input type="email" name="emailr" id="emailr">
+                    <input type="email" name="emailr" id="emailr" required>
 
 
                     <label for="passwordr">Contraseña</label>
-                    <input type="password" name="passwordr" id="passwordr">
+                    <input type="password" name="passwordr" id="passwordr" required>
 
                     <input type="submit" name="registro" value="Registrar">
                 </form>
