@@ -32,9 +32,7 @@ include_once(__DIR__."/layout/sidebar.php");
         </select>
 
         <label for="descripcion">Descripcion :</label>
-        <textarea name="descripcion" id="descripcion" rows="10" cols="100">
-            <?=isset($this->publicacion['descripcion']) ? $this->publicacion['descripcion'] : ""?>
-        </textarea>
+        <textarea name="descripcion" id="descripcion" rows="10" cols="100"><?=isset($this->publicacion['descripcion']) ? $this->publicacion['descripcion'] : ""?></textarea>
 
         <input type="submit" name="modificar" value="Editar">
 
