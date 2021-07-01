@@ -19,7 +19,7 @@
                 <?php if(isset($this->errores) && $this->errores->getTrace()[0]['function'] == 'getUser') : ?>
                             <div class="alerta alerta-error"><?=$this->errores->getMessage()?></div>
                     <?php endif ;?>
-                <form action="index" method="POST">
+                <form action="" method="POST">
                     <label for="emaili">Email</label>
                     <input type="email" name="emaili" id="emaili" required>
 
@@ -39,7 +39,7 @@
                     </div>
                 <?php endif ;?>
 
-                <form action="index" method="POST">
+                <form action="" method="POST">
                     <?php if(isset($this->errores) && $this->errores->getTrace()[0]['function'] == 'create') : ?>
                             <div class="alerta alerta-error"><?=$this->errores->getMessage()?></div>
                     <?php endif ;?>

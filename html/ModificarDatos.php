@@ -15,7 +15,7 @@ include_once(__DIR__."/layout/sidebar.php");
             </div>
         <?php endif; ?>
 
-        <form action="modificar-datos" method="POST">
+        <form action="" method="POST">
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" value="<?=$this->user['nombre']?>">
 
