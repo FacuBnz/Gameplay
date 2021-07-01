@@ -20,7 +20,6 @@ class Publicaciones extends Model{
     public function getPublicacion($tittle){ 
 
         $tittle = $this->db->escape($tittle);
-        $tittle = $this->db->escapeWildcards($tittle);
 
         $sql = "SELECT p.*, c.nombre 
                 FROM publicaciones p 
@@ -66,7 +65,6 @@ class Publicaciones extends Model{
     }
 
     public function getPublicacionForUser($user, $titulo){
-        $titulo = $this->db->escapeWildcards($titulo);
         $titulo = $this->db->escape($titulo);
 
         if(empty($titulo)) throw new ValidationPost("Titulo inválido");
@@ -106,7 +104,6 @@ class Publicaciones extends Model{
     }
 
     public function delete($titulo, $user){
-        $titulo = $this->db->escapeWildcards($titulo);
         $titulo = $this->db->escape($titulo);
 
         if(empty($titulo)) throw new ValidationPost("Titulo inválido");
