@@ -12,13 +12,13 @@ class Categorias extends Model{
     public function getNameCategory($id){
 
         if(empty($id) || !ctype_digit($id)) throw new ValidationCategory("id invalido");
-
-        $sql = "SELECT * FROM categorias";
-        $this->db->query($sql);
-        $rows = $this->db->numRows();
-        if($id > $rows) throw new ValidationCategory("id invalido");
-
         $id = $this->db->escape($id);
+
+        $sql = "SELECT id FROM categorias WHERE id='$id' LIMIT 1";
+        $this->db->query($sql);
+        $rs = $this->db->fetch();
+        if(!$rs) throw new ValidationCategory("id invalido");
+
         $sql = "SELECT id, nombre FROM categorias WHERE id=$id";
         $this->db->query($sql);
         return $this->db->fetch();

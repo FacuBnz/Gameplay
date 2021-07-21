@@ -3,13 +3,13 @@
 RewriteEngine on
 
 RewriteRule ^index$ controllers/index.php
-RewriteRule ^publicacion-([a-zñA-ZÑ0-9\s]*)$ controllers/publicacion.php?titulo=$1
+RewriteRule ^publicacion-([a-zñA-ZÑ0-9áéíóú:,.\"\s]*)$ controllers/publicacion.php?titulo=$1
 RewriteRule ^mis-publicaciones$ controllers/mis-publicaciones.php
-RewriteRule ^modificar-publicacion-([a-zñA-ZÑ0-9\s]*)$ controllers/modificar-publicacion.php?titulo=$1
+RewriteRule ^modificar-publicacion-([a-zñA-ZÑ0-9áéíóú:,.\"\s]*)$ controllers/modificar-publicacion.php?titulo=$1
 RewriteRule ^modificar-datos$ controllers/modificar-datos.php
 RewriteRule ^nueva-categoria$ controllers/nueva-categoria.php
 RewriteRule ^nueva-publicacion$ controllers/nueva-publicacion.php
-RewriteRule ^categoria-([1-9]+)$ controllers/categoria.php?id=$1
+RewriteRule ^categoria-([0-9]+)$ controllers/categoria.php?id=$1
 RewriteRule ^todos$ controllers/ver-todos.php
 RewriteRule ^cerrar$ controllers/cerrar.php
-RewriteRule ^borrar-publicacion-([a-zñA-ZÑ0-9\s]*)$ controllers/borrar-publicacion.php?titulo=$1
+RewriteRule ^borrar-publicacion-([a-zñA-ZÑ0-9áéíóú:,.\"\s]*)$ controllers/borrar-publicacion.php?titulo=$1

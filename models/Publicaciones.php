@@ -39,16 +39,19 @@ class Publicaciones extends Model{
         if(empty($desc)) throw new ValidationPost("Descripcion inválida");
         if(empty($categoria) || !ctype_digit($categoria)) throw new ValidationPost("Categoria inválida");
         if(empty($user) || !is_array($user) || !ctype_digit($user['id'])) throw new ValidationPost("Usuario invalido");
-        $sql = "SELECT * FROM usuarios";
+
+        $user_id = $this->db->escape($user['id']);
+
+        $sql = "SELECT id FROM usuarios WHERE id='$user_id' LIMIT 1";
         $this->db->query($sql);
-        $rows = $this->db->numRows();
-        if($user['id'] > $rows) throw new ValidationPost("Usuario invalido");
+        $rs = $this->db->fetch();
+
+        if(!$rs) throw new ValidationPost("Usuario invalido");
         
         $fecha = date('Y-m-d');
         $titulo = $this->db->escape($titulo);
         $categoria = $this->db->escape($categoria);
         $desc = $this->db->escape($desc);
-        $user_id = $this->db->escape($user['id']);
 
         $sql = "INSERT INTO publicaciones(usuario_id, categoria_id, titulo, descripcion,fecha) VALUES('$user_id', '$categoria', '$titulo', '$desc', '$fecha')";
 
@@ -58,12 +61,14 @@ class Publicaciones extends Model{
     public function getPublicacionesForUser($user){
 
         if(empty($user) || !is_array($user) || !ctype_digit($user['id'])) throw new ValidationPost("Usuario invalido");
-        $sql = "SELECT * FROM usuarios";
-        $this->db->query($sql);
-        $rows = $this->db->numRows();
-        if($user['id'] > $rows) throw new ValidationPost("Usuario invalido");
-
         $user_id = $this->db->escape($user['id']);
+        
+        $sql = "SELECT id FROM usuarios WHERE id='$user_id' LIMIT 1";
+        $this->db->query($sql);
+        $rs = $this->db->fetch();
+
+        if(!$rs) throw new ValidationPost("Usuario invalido");
+
 
         $sql = "SELECT p.*, c.nombre, u.id FROM publicaciones p 
             INNER JOIN categorias c 
@@ -80,14 +85,14 @@ class Publicaciones extends Model{
     public function getPublicacionForUser($user, $titulo){
         if(empty($titulo)) throw new ValidationPost("Titulo inválido");
         if(empty($user) || !is_array($user) || !ctype_digit($user['id'])) throw new ValidationPost("Usuario invalido");
-
-        $sql = "SELECT * FROM usuarios";
-        $this->db->query($sql);
-        $rows = $this->db->numRows();
-        if($user['id'] > $rows) throw new ValidationPost("Usuario invalido");
-        
-        $titulo = $this->db->escape($titulo);
         $user_id = $this->db->escape($user['id']);
+
+        $sql = "SELECT id FROM usuarios WHERE id='$user_id' LIMIT 1";
+        $this->db->query($sql);
+        $rs = $this->db->fetch();
+        if(!$rs) throw new ValidationPost("Usuario invalido");
+
+        $titulo = $this->db->escape($titulo);
 
         $sql = "SELECT p.*, c.nombre, u.id FROM publicaciones p 
             INNER JOIN categorias c 
@@ -107,18 +112,17 @@ class Publicaciones extends Model{
         if(empty($descripcion)) throw new ValidationPost("Descripcion inválida");
         if(empty($categoria) || !ctype_digit($categoria)) throw new ValidationPost("Categoria inválida");
         if(empty($user) || !is_array($user) || !ctype_digit($user['id'])) throw new ValidationPost("Usuario invalido");
-
-        $sql = "SELECT * FROM usuarios";
-        $this->db->query($sql);
-        $rows = $this->db->numRows();
-        if($user['id'] > $rows) throw new ValidationPost("Usuario invalido");
+        $user_id = $this->db->escape($user['id']);
         
+        $sql = "SELECT id FROM usuarios WHERE id='$user_id' LIMIT 1";
+        $this->db->query($sql);
+        $rs = $this->db->fetch();
+        if(!$rs) throw new ValidationPost("Usuario invalido");
+
         $titulo = $this->db->escape($titulo);
         $titulo_anti = $this->db->escape($titulo_anti);
         $categoria = $this->db->escape($categoria);
         $descripcion = $this->db->escape($descripcion);
-        $user_id = $this->db->escape($user['id']);
-
 
         $sql = "UPDATE publicaciones 
         SET titulo='$titulo', descripcion='$descripcion', categoria_id='$categoria'
@@ -131,14 +135,14 @@ class Publicaciones extends Model{
     public function delete($titulo, $user){
         if(empty($titulo)) throw new ValidationPost("Titulo inválido");
         if(empty($user) || !is_array($user) || !ctype_digit($user['id'])) throw new ValidationPost("Usuario invalido");
+        $user_id = $this->db->escape($user['id']);
 
-        $sql = "SELECT * FROM usuarios";
+        $sql = "SELECT id FROM usuarios WHERE id='$user_id' LIMIT 1";
         $this->db->query($sql);
-        $rows = $this->db->numRows();
-        if($user['id'] > $rows) throw new ValidationPost("Usuario invalido");
+        $rs = $this->db->fetch();
+        if(!$rs) throw new ValidationPost("Usuario invalido");
 
         $titulo = $this->db->escape($titulo);
-        $user_id = $this->db->escape($user['id']);
 
         $sql = "DELETE 
         FROM publicaciones 

@@ -59,15 +59,16 @@ class Usuarios extends Model{
         if(empty($apellido) || is_numeric($apellido) || !preg_match('/^(?=.{3,18}$)[a-zñA-ZÑ](\s?[a-zñA-ZÑ])*$/', $apellido)) throw new ValidationUser("El apellido no es válido");
         if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) throw new ValidationUser("El email no es válido");
         if(empty($user) || !is_array($user) || !ctype_digit($user['id'])) throw new ValidationUser("Usuario invalido");
-        $sql = "SELECT * FROM usuarios";
+        $user_id = $this->db->escape($user['id']);
+
+        $sql = "SELECT id FROM usuarios WHERE id='$user_id' LIMIT 1";
         $this->db->query($sql);
-        $rows = $this->db->numRows();
-        if($user['id'] > $rows) throw new ValidationUser("Usuario invalido");
+        $rs = $this->db->fetch();
+        if(!$rs) throw new ValidationPost("Usuario invalido");
 
         $nombre = $this->db->escape($nombre);
         $apellido = $this->db->escape($apellido);
         $email = $this->db->escape($email);
-        $user_id = $this->db->escape($user['id']);
 
         $sql = "UPDATE usuarios 
         SET nombre='$nombre', apellido='$apellido', email='$email' 
