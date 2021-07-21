@@ -26,6 +26,7 @@ if(count($_POST) > 0){
         $_SESSION['usuario']['email'] = $_POST['email'];
 
     } catch (ValidationUser $e) {
+        if($e->getMessage() === "Usuario invalido") die($e->getMessage());
         $_SESSION['errores_modificacion_user'] = $e;
     }
 }

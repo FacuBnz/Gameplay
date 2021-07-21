@@ -11,7 +11,12 @@ $cate = new Categorias();
 $cateTodos = $cate->getTodos();
 
 $publi = new Publicaciones();
-$publi = $publi->getPublicacion($_GET['titulo']);
+
+try {
+    $publi = $publi->getPublicacion($_GET['titulo']);
+} catch (ValidationPost $err) {
+    $publi = null;
+}
 
 //var_dump($publi);
 

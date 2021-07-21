@@ -8,7 +8,12 @@ if(!isset($_GET['id']) || !ctype_digit($_GET['id'])) die("Error de validacion de
 
 $cate = new Categorias();
 $cateTodos = $cate->getTodos();
-$nombreCategoria = $cate->getNameCategory($_GET['id']);
+
+try {
+    $nombreCategoria = $cate->getNameCategory($_GET['id']);
+} catch (ValidationCategory $err) {
+    $nombreCategoria = "";
+}
 
 $publi = new Publicaciones();
 $publiTodos = $publi->getPublicaciones();
@@ -16,7 +21,7 @@ $publiTodos = $publi->getPublicaciones();
 
 $v = new Categoria();
 $v->categorias = $cateTodos;
-$v->nombreCategoria = $nombreCategoria["nombre"];
+$v->nombreCategoria = $nombreCategoria;
 $v->publicaciones = $publiTodos;
 $v->user = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
 $v->render();

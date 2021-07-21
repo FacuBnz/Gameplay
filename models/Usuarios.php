@@ -7,10 +7,10 @@ class Usuarios extends Model{
     public function create($nombre, $apellido, $email, $pass){
 
         //nombre
-        if(empty($nombre) || is_numeric($nombre) || preg_match("/[0-9]/", $nombre)) throw new ValidationUser("El nombre no es válido"); 
+        if(empty($nombre) || is_numeric($nombre) || !preg_match('/^(?=.{3,18}$)[a-zñA-ZÑ](\s?[a-zñA-ZÑ])*$/', $nombre)) throw new ValidationUser("El nombre no es válido"); 
         
         //apellido
-        if(empty($apellido) || is_numeric($apellido) || preg_match("/[0-9]/", $apellido)) throw new ValidationUser("El apellido no es válido");
+        if(empty($apellido) || is_numeric($apellido) || !preg_match('/^(?=.{3,18}$)[a-zñA-ZÑ](\s?[a-zñA-ZÑ])*$/', $apellido)) throw new ValidationUser("El apellido no es válido");
         
         //email
         if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) throw new ValidationUser("El email no es válido");
@@ -55,22 +55,23 @@ class Usuarios extends Model{
 
     public function update($nombre, $apellido, $email, $user){
 
+        if(empty($nombre) || is_numeric($nombre) || !preg_match('/^(?=.{3,18}$)[a-zñA-ZÑ](\s?[a-zñA-ZÑ])*$/', $nombre)) throw new ValidationUser("El nombre no es válido");
+        if(empty($apellido) || is_numeric($apellido) || !preg_match('/^(?=.{3,18}$)[a-zñA-ZÑ](\s?[a-zñA-ZÑ])*$/', $apellido)) throw new ValidationUser("El apellido no es válido");
+        if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) throw new ValidationUser("El email no es válido");
+        if(empty($user) || !is_array($user) || !ctype_digit($user['id'])) throw new ValidationUser("Usuario invalido");
+        $sql = "SELECT * FROM usuarios";
+        $this->db->query($sql);
+        $rows = $this->db->numRows();
+        if($user['id'] > $rows) throw new ValidationUser("Usuario invalido");
+
         $nombre = $this->db->escape($nombre);
         $apellido = $this->db->escape($apellido);
         $email = $this->db->escape($email);
-
-        if(empty($nombre) || is_numeric($nombre) || preg_match("/[0-9]/", $nombre)) throw new ValidationUser("El nombre no es válido");
-
-        if(empty($apellido) || is_numeric($apellido) || preg_match("/[0-9]/", $apellido)) throw new ValidationUser("El apellido no es válido");
-
-        if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) throw new ValidationUser("El email no es válido");
-
-        if(empty($user) || !is_array($user)) throw new ValidationUser("Usuario invalido");
-
+        $user_id = $this->db->escape($user['id']);
 
         $sql = "UPDATE usuarios 
         SET nombre='$nombre', apellido='$apellido', email='$email' 
-        WHERE id={$user['id']}";
+        WHERE id='$user_id'";
 
         $this->db->query($sql);
     }

@@ -19,7 +19,7 @@ include_once(__DIR__."/layout/sidebar.php");
 
         <form action="" method="post">
             <label for="nombre">Nombre de categoria :</label>
-            <input type="text" name="nombre" id="nombre">
+            <input type="text" name="nombre" id="nombre" minlength="3" maxlength="18" required>
             <input type="submit" name="nueva_categoria" value="Crear">
         </form>
     </div>

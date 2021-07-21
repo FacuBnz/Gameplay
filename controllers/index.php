@@ -14,8 +14,8 @@ if(count($_POST) > 0 && isset($_POST['registro'])){
     if(!isset($_POST['emailr'])) die("Error de validacion email"); 
     if(!isset($_POST['passwordr'])) die("Error de validacion password");
     
+    $user = new Usuarios();
     try{
-        $user = new Usuarios();
         $user->create($_POST['nombre'], $_POST['apellido'], $_POST['emailr'], $_POST['passwordr']);
         $_SESSION['registro_guardado'] = "El registro se ha completado con exito";
 
@@ -28,9 +28,9 @@ if(count($_POST) > 0 && isset($_POST['entrar'])){
     
     if(!isset($_POST['emaili'])) die("Error de validacion email"); 
     if(!isset($_POST['passwordi'])) die("Error de validacion password"); 
+    $user = new Usuarios();
     
     try {
-        $user = new Usuarios();
         $_SESSION['usuario'] = $user->getUser($_POST['emaili'], $_POST['passwordi']);
     } catch (ValidationUser $e) {
         $_SESSION['errores_user'] = $e;
@@ -42,7 +42,7 @@ $cate = new Categorias();
 $cateTodos = $cate->getTodos();
 
 $publi = new Publicaciones();
-$publiTodos = $publi->getPublicaciones(4);
+$publiTodos = $publi->getPublicaciones('4');
 
 //var_dump($publiTodos);
 

@@ -13,12 +13,13 @@ if(count($_POST) > 0){
     if(!isset($_POST['titulo'])) die("Error de validacion titulo");
     if(!isset($_POST['categoria'])) die("Error de validacion categoria");
     if(!isset($_POST['descripcion'])) die("Error de validacion descripcion");
-
+    $post = new Publicaciones();
+    
     try {
-        $post = new Publicaciones();
         $post->create($_POST['titulo'], $_POST['categoria'], $_POST['descripcion'], $_SESSION['usuario']);
         $_SESSION['post_guarda'] = "La publicación se ha guardado con éxito";
     } catch (ValidationPost $e) {
+        if($e->getMessage() === "Usuario invalido") die($e->getMessage());
         $_SESSION['errores_new_post'] = $e;
     }
 } 

@@ -7,16 +7,17 @@ if(!isset($_SESSION['usuario'])){
     header('Location: index');
 }
 
-if(count($_GET) > 0){
-    try {
-        if(!isset($_GET['titulo'])) die("Error de validacion del parametro titulo");
 
-        $publi = new Publicaciones();
-        $publi->delete($_GET['titulo'], $_SESSION['usuario']);
-        $_SESSION['completo_modificacion_post'] = "Publicación eliminada correctamente";
-    } catch (ValidationPost $e) {
-        $_SESSION['errores_modificacion_post'] = $e;
-    }
+if(!isset($_GET['titulo'])) die("Error de validacion del parametro titulo");
+$publi = new Publicaciones();
+
+try {
+    $publi->delete($_GET['titulo'], $_SESSION['usuario']);
+    $_SESSION['completo_modificacion_post'] = "Publicación eliminada correctamente";
+} catch (ValidationPost $e) {
+    if($e->getMessage() === "Usuario invalido") die($e->getMessage());
+    $_SESSION['errores_modificacion_post'] = $e;
 }
+
 
 header('Location: mis-publicaciones');

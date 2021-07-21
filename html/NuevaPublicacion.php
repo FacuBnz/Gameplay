@@ -20,7 +20,7 @@ include_once(__DIR__."/layout/sidebar.php");
         <form action="" method="POST">
 
         <label for="titulo">Titulo : </label>
-        <input type="text" name="titulo" id="titulo">
+        <input type="text" name="titulo" id="titulo" required>
 
         <label for="categoria">Categoria :</label>
         <select name="categoria" id="categoria">
@@ -30,7 +30,7 @@ include_once(__DIR__."/layout/sidebar.php");
         </select>
 
         <label for="descripcion">Descripcion :</label>
-        <textarea name="descripcion" id="descripcion" rows="10" cols="100"></textarea>
+        <textarea name="descripcion" id="descripcion" rows="10" cols="100" required></textarea>
 
         <input type="submit" name="nuevo" value="Crear">
 

@@ -15,7 +15,13 @@ $categorias = $cate->getTodos();
 $v = new MisPublicaciones();
 $publicaciones = new Publicaciones();
 
-$v->publicaciones = $publicaciones->getPublicacionesForUser($_SESSION['usuario']);
+try {
+    $v->publicaciones = $publicaciones->getPublicacionesForUser($_SESSION['usuario']);
+    
+} catch (ValidationPost $err) {
+    die($err->getMessage());
+}
+
 $v->categorias = $categorias;
 $v->user = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
 $v->completo = isset($_SESSION['completo_modificacion_post']) ? $_SESSION['completo_modificacion_post'] : null;
