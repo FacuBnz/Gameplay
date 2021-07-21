@@ -22,7 +22,7 @@
         <nav id="menu">
             <ul>
                 <?php foreach($this->categorias as $c) {?>
-                    <li><a href="categoria?id=<?=$c['id']?>"><?=$c['nombre']?></a></li>
+                    <li><a href="categoria-<?=$c['id']?>"><?=$c['nombre']?></a></li>
                 <?php }?>
             </ul>
         </nav>
