@@ -7,10 +7,10 @@ class Usuarios extends Model{
     public function create($nombre, $apellido, $email, $pass){
 
         //nombre
-        if(empty($nombre) || is_numeric($nombre) || !preg_match('/^(?=.{3,18}$)[a-zñA-ZÑ](\s?[a-zñA-ZÑ])*$/', $nombre)) throw new ValidationUser("El nombre no es válido"); 
+        if(empty($nombre) || is_numeric($nombre) || !preg_match('/^(?=.{3,18}$)[a-zñA-ZÑ\'\"](\s?[a-zñA-ZÑ\'\"])*$/', $nombre)) throw new ValidationUser("El nombre no es válido"); 
         
         //apellido
-        if(empty($apellido) || is_numeric($apellido) || !preg_match('/^(?=.{3,18}$)[a-zñA-ZÑ](\s?[a-zñA-ZÑ])*$/', $apellido)) throw new ValidationUser("El apellido no es válido");
+        if(empty($apellido) || is_numeric($apellido) || !preg_match('/^(?=.{3,18}$)[a-zñA-ZÑ\"\'](\s?[a-zñA-ZÑ\'\"])*$/', $apellido)) throw new ValidationUser("El apellido no es válido");
         
         //email
         if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) throw new ValidationUser("El email no es válido");

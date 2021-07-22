@@ -5,7 +5,7 @@ require_once '../models/ValidationCategory.php';
 class Categorias extends Model{
     
     public function getTodos(){
-        $this->db->query("SELECT * FROM categorias");
+        $this->db->query("SELECT * FROM categorias LIMIT 10");
         return $this->db->fetchAll();
     }
 
@@ -14,14 +14,12 @@ class Categorias extends Model{
         if(empty($id) || !ctype_digit($id)) throw new ValidationCategory("id invalido");
         $id = $this->db->escape($id);
 
-        $sql = "SELECT id FROM categorias WHERE id='$id' LIMIT 1";
+        $sql = "SELECT * FROM categorias WHERE id='$id' LIMIT 1";
         $this->db->query($sql);
         $rs = $this->db->fetch();
         if(!$rs) throw new ValidationCategory("id invalido");
+        return $rs;
 
-        $sql = "SELECT id, nombre FROM categorias WHERE id=$id";
-        $this->db->query($sql);
-        return $this->db->fetch();
     }
 
     public function create($nombre){
